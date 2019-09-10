@@ -1,0 +1,24 @@
+﻿<Window x:Class="MessageLongDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:iqb.lib.components"
+        
+        Icon="/IQB-Components;component/Resources/iqbGrau.ico"
+        ShowInTaskbar="False" 
+        WindowStartupLocation="CenterOwner"
+        Title="Das ist der Titel" Height="700" Width="650">
+    <Window.Resources>
+        <ResourceDictionary Source="GlobalStyles.xaml"/>
+    </Window.Resources>
+    <DockPanel>
+        <ItemsControl Style="{StaticResource gsDialogBoxFooter}" DockPanel.Dock="Bottom" ItemContainerStyle="{StaticResource gsDialogBoxFooterButton}">
+            <Button Name="BtnOK" IsDefault="True">Schließen</Button>
+        </ItemsControl>
+
+        <local:ButtonHelpSmall DockPanel.Dock="Top" Margin="0 3 3 0" HorizontalAlignment="Right" x:Name="BtnHelp" />
+        <Image Source="/IQB-Common;component/Resources/Warning.png" Margin="10" Name="ImgWarning" Width="50"/>
+        <Image Source="/IQB-Common;component/Resources/error.png" Margin="10" Name="ImgError" Width="50"/>
+        <TextBox Margin="10" Name="TBMessage" TextWrapping="Wrap" IsReadOnly="True" 
+                 IsReadOnlyCaretVisible="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">Das ist der Hilfetext.</TextBox>
+    </DockPanel>
+</Window>

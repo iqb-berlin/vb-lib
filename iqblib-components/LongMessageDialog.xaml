@@ -1,0 +1,24 @@
+﻿<Window x:Class="LongMessageDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:iqb.lib.components"
+
+        WindowStartupLocation="CenterOwner"
+        SizeToContent="Height" MaxHeight="700"
+        ShowInTaskbar="False"
+        Icon="/IQB-Components;component/Resources/iqbGrau.ico"
+        Title="Du hast den Titel vergessen!" Height="250" Width="500">
+    <Window.Resources>
+        <ResourceDictionary Source="GlobalStyles.xaml"/>
+    </Window.Resources>
+    <DockPanel>
+        <local:ButtonHelpSmall DockPanel.Dock="Top" Margin="0 3 3 0" HorizontalAlignment="Right" x:Name="BtnHelp" Panel.ZIndex="4" />
+        <ItemsControl Style="{StaticResource gsDialogBoxFooter}" DockPanel.Dock="Bottom" ItemContainerStyle="{StaticResource gsDialogBoxFooterButton}" Panel.ZIndex="20">
+            <Button Name="BtnClose">Schließen</Button>
+            <Button Name="BtnEditor" ToolTip="Die Meldungen in einen Texteditor übertragen.">Texteditor</Button>
+        </ItemsControl>
+
+        <local:MessageBoxUserControl x:Name="MBUC" Margin="10"/>
+
+    </DockPanel>
+</Window>

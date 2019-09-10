@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="CheckBoxListDictStringUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:iqb.lib.components"
+             mc:Ignorable="d" 
+             d:DesignHeight="148" d:DesignWidth="300">
+    <GroupBox Header="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:CheckBoxListDictStringUserControl}}, Path=Label}">
+        <GroupBox.Resources>
+            <local:CheckBoxListDictStringConverter x:Key="CheckBoxListDictStringConverter" />
+        </GroupBox.Resources>
+        <ItemsControl Margin="2" x:Name="ICExtraFummel" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:CheckBoxListDictStringUserControl}}, Path=SelectionList}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox Content="{Binding Value}" Margin="2 2 8 2">
+                        <CheckBox.IsChecked>
+                            <MultiBinding Converter="{StaticResource CheckBoxListDictStringConverter}" 
+                                                                  ConverterParameter="{x:Reference ICExtraFummel}" UpdateSourceTrigger="LostFocus">
+                                <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type local:CheckBoxListDictStringUserControl}}" 
+                                                            Path="PropValue" Mode="TwoWay"/>
+                                <Binding Path="Key" Mode="OneTime" />
+                            </MultiBinding>
+                        </CheckBox.IsChecked>
+                    </CheckBox>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </GroupBox>
+</UserControl>

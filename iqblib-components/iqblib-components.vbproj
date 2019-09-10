@@ -1,0 +1,304 @@
+﻿<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <RootNamespace>iqb.lib.components</RootNamespace>
+    <AssemblyName>iqblib-components</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+    <Deterministic>true</Deterministic>
+    <ProjectGuid>{D5E4CC00-DC78-4787-8834-AD5A1AD4FD03}</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>true</IncrementalBuild>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>iqblib-components.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>false</IncrementalBuild>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>iqblib-components.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="System.Threading.Tasks" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows" />
+    <Import Include="System.Windows.Controls" />
+    <Import Include="System.Windows.Data" />
+    <Import Include="System.Windows.Documents" />
+    <Import Include="System.Windows.Input" />
+    <Import Include="System.Windows.Shapes" />
+    <Import Include="System.Windows.Media" />
+    <Import Include="System.Windows.Media.Imaging" />
+    <Import Include="System.Windows.Navigation" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppAboutDialog.xaml.vb">
+      <DependentUpon>AppAboutDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppResource.vb" />
+    <Compile Include="AsynchProgressBarUserControl.xaml.vb">
+      <DependentUpon>AsynchProgressBarUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Buttons.vb" />
+    <Compile Include="CheckBoxListDictStringUserControl.xaml.vb">
+      <DependentUpon>CheckBoxListDictStringUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlsConverters.vb" />
+    <Compile Include="Converters.vb" />
+    <Compile Include="CredentialsDialog.xaml.vb">
+      <DependentUpon>CredentialsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CredentialsUserControl.xaml.vb">
+      <DependentUpon>CredentialsUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DialogFactory.vb" />
+    <Compile Include="FilenameShowUserControl.xaml.vb">
+      <DependentUpon>FilenameShowUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelpProvider.vb" />
+    <Compile Include="InfoTextUserControl.xaml.vb">
+      <DependentUpon>InfoTextUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IQBCommands.vb" />
+    <Compile Include="LongMessageDialog.xaml.vb">
+      <DependentUpon>LongMessageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MessageBoxUserControl.xaml.vb">
+      <DependentUpon>MessageBoxUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MessageDialog.xaml.vb">
+      <DependentUpon>MessageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MessageLongDialog.xaml.vb">
+      <DependentUpon>MessageLongDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MessagePopup.xaml.vb">
+      <DependentUpon>MessagePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MessageTextUserControl.xaml.vb">
+      <DependentUpon>MessageTextUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MouseWheelPass.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="simpleMessageBox.xaml.vb">
+      <DependentUpon>simpleMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StretchingTreeView.vb" />
+    <Compile Include="TextInputDialog.xaml.vb">
+      <DependentUpon>TextInputDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TimeEditUserControl.xaml.vb">
+      <DependentUpon>TimeEditUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TimeShowUserControl.xaml.vb">
+      <DependentUpon>TimeShowUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ValidationRules.vb" />
+    <Compile Include="WaitAnimationUserControl.xaml.vb">
+      <DependentUpon>WaitAnimationUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XRenameDialog.xaml.vb">
+      <DependentUpon>XRenameDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XSelectionDialog.xaml.vb">
+      <DependentUpon>XSelectionDialog.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="AppAboutDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AsynchProgressBarUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CheckBoxListDictStringUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CredentialsDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CredentialsUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FilenameShowUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GlobalStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="InfoTextUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LongMessageDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MessageBoxUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MessageDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MessageLongDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MessagePopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MessageTextUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="simpleMessageBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TextInputDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TimeEditUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TimeShowUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WaitAnimationUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="XRenameDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="XSelectionDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\023_Tip_32x42_72.png" />
+    <Resource Include="Resources\112_ArrowReturnLeft_Blue_32x42_72.png" />
+    <Resource Include="Resources\112_DownArrowLong_Blue_16x16_72.png" />
+    <Resource Include="Resources\112_DownArrowShort_Green_16x16_72.png" />
+    <Resource Include="Resources\112_LeftArrowLong_Blue_16x16_72.png" />
+    <Resource Include="Resources\112_RightArrowLong_Blue_16x16_72.png" />
+    <Resource Include="Resources\112_UpArrowLong_Blue_16x16_72.png" />
+    <Resource Include="Resources\305_Close_32x32_72.png" />
+    <Resource Include="Resources\AddCross.png" />
+    <Resource Include="Resources\BEAT.png" />
+    <Resource Include="Resources\BEATabout.png" />
+    <Resource Include="Resources\DeleteCross.png" />
+    <Resource Include="Resources\EditDocument.png" />
+    <Resource Include="Resources\error.png" />
+    <Resource Include="Resources\eye.png" />
+    <Resource Include="Resources\Filter.png" />
+    <Resource Include="Resources\FilterRemove.png" />
+    <Resource Include="Resources\Help.png" />
+    <Resource Include="Resources\IQB1_grau.jpg" />
+    <Resource Include="Resources\iqbGrau.ico" />
+    <Resource Include="Resources\NewDocument_32x32.png" />
+    <Resource Include="Resources\openHS.png" />
+    <Resource Include="Resources\Options.png" />
+    <Resource Include="Resources\PrintEntireDocument.png" />
+    <Resource Include="Resources\reload.png" />
+    <Resource Include="Resources\RightArrowShort_Green.png" />
+    <Resource Include="Resources\saveHS.png" />
+    <Resource Include="Resources\ShowGridlinesHS.png" />
+    <Resource Include="Resources\Table_32.png" />
+    <Resource Include="Resources\Warning.png" />
+    <Resource Include="Resources\ZoomHS.png" />
+    <Resource Include="Resources\ZoomIn.png" />
+    <Resource Include="Resources\ZoomOut.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>

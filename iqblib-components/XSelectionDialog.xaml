@@ -1,0 +1,35 @@
+﻿<Window x:Class="XSelectionDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:iqb.lib.components"
+        
+        Icon="/IQB-Components;component/Resources/iqbGrau.ico" SizeToContent="Height" ShowInTaskbar="False"
+        Title="Bitte wählen" MinHeight="400" MaxHeight="900" Width="450" WindowStartupLocation="CenterOwner" >
+    <Window.Resources>
+        <ResourceDictionary Source="GlobalStyles.xaml"/>
+    </Window.Resources>
+    <DockPanel>
+        <DockPanel.Resources>
+            <local:IntegerBooleanGreaterThen0Converter x:Key="IntegerBooleanGreaterThen0Converter" />
+        </DockPanel.Resources>
+        <ItemsControl Style="{StaticResource gsDialogBoxFooter}" DockPanel.Dock="Bottom" ItemContainerStyle="{StaticResource gsDialogBoxFooterButton}" Panel.ZIndex="2">
+            <Button Name="BtnOK" IsDefault="True" 
+                        IsEnabled="{Binding ElementName=LBSelection, Path=SelectedItems.Count, Converter={StaticResource IntegerBooleanGreaterThen0Converter}}">OK</Button>
+            <Button Name="BtnCancel" IsCancel="True">Abbrechen</Button>
+        </ItemsControl>
+
+        <local:ButtonHelpSmall DockPanel.Dock="Top" Margin="0 3 3 0" HorizontalAlignment="Right" x:Name="BtnHelp" Panel.ZIndex="4" />
+        <Label Name="LbTip" Style="{StaticResource gsTip}" DockPanel.Dock="Top" Margin="10 10 10 0" />
+        <TextBlock Margin="10 10 10 0" DockPanel.Dock="Top" Name="TBPrompt" TextWrapping="Wrap">Das ist der Hilfetext.</TextBlock>
+        <ListBox Name="LBSelection" Margin="10" ItemContainerStyle="{StaticResource gsStandardListBoxItem}"
+                 HorizontalContentAlignment="Stretch"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Margin="5 0 0 0" Text="{Binding Value}" TextTrimming="CharacterEllipsis"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </DockPanel>
+</Window>

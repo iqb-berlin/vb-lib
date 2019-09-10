@@ -1,0 +1,104 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="gsListBoxItemSelectedBrush" Color="#FFBBF0FF" />
+    <SolidColorBrush x:Key="gsListBoxItemFocusedBrush" Color="#FF95E7FF" />
+    <SolidColorBrush x:Key="gsListBoxGroupBackgroundBrush" Color="PowderBlue" />
+    <SolidColorBrush x:Key="gsListBoxGroupBorderBrush" Color="CadetBlue" />
+    <SolidColorBrush x:Key="gsTaskListBoxGroupBackgroundBrush" Color="Moccasin" />
+    <SolidColorBrush x:Key="gsTaskListBoxGroupBorderBrush" Color="Tan" />
+
+    <Style TargetType="{x:Type ListBoxItem}" x:Key="gsStandardListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Border Background="Transparent" x:Name="LBIBorder">
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter TargetName="LBIBorder" Property="Background" Value="{StaticResource gsListBoxItemSelectedBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="true">
+                            <Setter TargetName="LBIBorder" Property="Background" Value="{StaticResource gsListBoxItemFocusedBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="{x:Type Label}" x:Key="gsTip">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Label}">
+                    <Border BorderBrush="LightSkyBlue" BorderThickness="2" Background="PaleTurquoise">
+                        <DockPanel>
+                            <Image Source="/IQB-Common;component/Resources/023_Tip_32x42_72.png" Width="42" Margin="3" VerticalAlignment="Top"/>
+                            <TextBlock Margin="3" Text="{TemplateBinding Content}" FontStyle="Italic" FontSize="12" TextWrapping="Wrap"/>
+                        </DockPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type GroupItem}" x:Key="gsGroupStyleStandard">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GroupItem}">
+                    <StackPanel>
+                        <Border BorderBrush="{StaticResource gsListBoxGroupBorderBrush}" BorderThickness="0 0 0 1" Background="{StaticResource gsListBoxGroupBackgroundBrush}">
+                            <TextBlock Text="{Binding Name}" Margin="1 3 1 1" TextTrimming="CharacterEllipsis"/>
+                        </Border>
+                        <ItemsPresenter />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type GroupItem}" x:Key="gsGroupStyleTaskGroup">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GroupItem}">
+                    <StackPanel>
+                        <Border BorderBrush="{StaticResource gsTaskListBoxGroupBorderBrush}" 
+                                                    BorderThickness="0 0 0 1" Background="{StaticResource gsTaskListBoxGroupBackgroundBrush}">
+                            <TextBlock Text="{Binding Name}" Margin="1 3 1 1" TextTrimming="CharacterEllipsis"/>
+                        </Border>
+                        <ItemsPresenter Margin="5 0 0 0" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="gsStandardDialogBoxFooter" TargetType="{x:Type Border}">
+        <Setter Property="BorderBrush" Value="LightGray"/>
+        <Setter Property="BorderThickness" Value="0 1 0 0"/>
+        <Setter Property="Background" Value="Gainsboro"/>
+    </Style>
+
+    <Style x:Key="gsDialogBoxFooter" TargetType="{x:Type ItemsControl}">
+        <Setter Property="Background" Value="Gainsboro"/>
+        <Setter Property="BorderBrush" Value="LightGray"/>
+        <Setter Property="BorderThickness" Value="0 1 0 0"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="gsDialogBoxFooterButton" TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Padding" Value="4"/>
+    </Style>
+
+
+</ResourceDictionary>
