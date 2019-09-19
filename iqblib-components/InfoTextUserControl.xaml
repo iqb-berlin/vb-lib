@@ -8,7 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Border BorderBrush="LightSkyBlue" BorderThickness="2" Background="PaleTurquoise">
         <DockPanel>
-            <Image Source="/IQB-Common;component/Resources/023_Tip_32x42_72.png" Width="42" Margin="3" VerticalAlignment="Top"/>
+            <Image Source="/iqblib-components;component/Resources/023_Tip_32x42_72.png" Width="42" Margin="3" VerticalAlignment="Top"/>
             <TextBlock Margin="3" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:InfoTextUserControl}}, Path=Text, Mode=OneWay}" 
                        FontStyle="Italic" FontSize="12" TextWrapping="Wrap"/>
         </DockPanel>

@@ -9,6 +9,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "iqblib-config", "iqblib-con
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "iqblib-windows", "iqblib-windows\iqblib-windows.vbproj", "{FF39D188-E729-4BA3-88C4-B8CB00A7622D}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "iqblib-openxml", "iqblib-openxml\iqblib-openxml.vbproj", "{15DADC2D-406E-4827-BA70-B0747E3AB3A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FF39D188-E729-4BA3-88C4-B8CB00A7622D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF39D188-E729-4BA3-88C4-B8CB00A7622D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF39D188-E729-4BA3-88C4-B8CB00A7622D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15DADC2D-406E-4827-BA70-B0747E3AB3A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15DADC2D-406E-4827-BA70-B0747E3AB3A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15DADC2D-406E-4827-BA70-B0747E3AB3A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15DADC2D-406E-4827-BA70-B0747E3AB3A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

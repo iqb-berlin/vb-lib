@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:iqb.lib.components"
         
-        Icon="/IQB-Component;component/Resources/iqbGrau.ico" SizeToContent="Height" ShowInTaskbar="False"
+        Icon="/iqblib-components;component/Resources/iqbGrau.ico" SizeToContent="Height" ShowInTaskbar="False"
         Title="Du hast den Titel vergessen" MinHeight="400" Width="450" WindowStartupLocation="CenterOwner" >
     <Window.Resources>
         <ResourceDictionary Source="GlobalStyles.xaml" />

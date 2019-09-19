@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("iqblib-config")>
-<Assembly: AssemblyDescription("Das IQB benutzt diese Bibliothek, um Konfigurationsdaten einheitlich für alle Click-Once-Deployments zu speichern.")>
+<Assembly: AssemblyTitle("iqblib-openxml")>
+<Assembly: AssemblyDescription("Das IQB versammelt hier nützliche Funktionen für das Lesen und Schreiben von OpenXml-Dokumenten.")>
 <Assembly: AssemblyCompany("IQB Berlin")>
-<Assembly: AssemblyProduct("iqblib-config")>
+<Assembly: AssemblyProduct("iqblib-openxml")>
 <Assembly: AssemblyCopyright("IQB © 2019")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("a0ab5fa2-d2e2-467b-bdbc-d6594f22f55d")>
+<Assembly: Guid("56c9caee-524d-44fe-bae7-618feb1074bc")>
 
 ' Version information for an assembly consists of the following four values:
 '

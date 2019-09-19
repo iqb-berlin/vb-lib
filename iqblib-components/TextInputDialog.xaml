@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:iqb.lib.components"
         
-        Icon="/IQB-Components;component/Resources/iqbGrau.ico"
+        Icon="/iqblib-components;component/Resources/iqbGrau.ico"
         ShowInTaskbar="False" SizeToContent="Height"
         WindowStartupLocation="CenterOwner"
         Title="Das ist der Titel" Height="250" Width="450">

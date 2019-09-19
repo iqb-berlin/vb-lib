@@ -33,7 +33,7 @@
                 <ControlTemplate TargetType="{x:Type Label}">
                     <Border BorderBrush="LightSkyBlue" BorderThickness="2" Background="PaleTurquoise">
                         <DockPanel>
-                            <Image Source="/IQB-Common;component/Resources/023_Tip_32x42_72.png" Width="42" Margin="3" VerticalAlignment="Top"/>
+                            <Image Source="/iqblib-components;component/Resources/023_Tip_32x42_72.png" Width="42" Margin="3" VerticalAlignment="Top"/>
                             <TextBlock Margin="3" Text="{TemplateBinding Content}" FontStyle="Italic" FontSize="12" TextWrapping="Wrap"/>
                         </DockPanel>
                     </Border>

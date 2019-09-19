@@ -7,10 +7,10 @@
         ShowInTaskbar="False" 
         Height="461" Width="521" 
         WindowStartupLocation="CenterScreen" 
-        WindowStyle="None" Icon="/IQB-Common;component/Resources/iqbGrau.ico"
+        WindowStyle="None" Icon="/iqblib-components;component/Resources/iqbGrau.ico"
         Background="#FFEEEEEE">
     <Canvas>
-        <Image Source="/IQB-Common;component/Resources/IQB1_grau.jpg" Stretch="None" Canvas.Left="0" Canvas.Top="-102" />
+        <Image Source="/iqblib-components;component/Resources/IQB1_grau.jpg" Stretch="None" Canvas.Left="0" Canvas.Top="-102" />
         <DockPanel Height="410" Width="435" Canvas.Top="12" Canvas.Left="40">
             <DockPanel.Resources>
                 <Style TargetType="TextBlock">

@@ -6,7 +6,7 @@
         WindowStartupLocation="CenterOwner"
         SizeToContent="Height" MaxHeight="700"
         ShowInTaskbar="False"
-        Icon="/IQB-Components;component/Resources/iqbGrau.ico"
+        Icon="/iqblib-components;component/Resources/iqbGrau.ico"
         Title="Du hast den Titel vergessen!" Height="250" Width="500">
     <Window.Resources>
         <ResourceDictionary Source="GlobalStyles.xaml"/>

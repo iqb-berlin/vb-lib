@@ -33,8 +33,14 @@
         d.ShowDialog()
     End Sub
 
-    Public Shared Function YesNoCancel(parent As FrameworkElement, Title As String, Message As String, Optional HelpTopic As Integer = 0) As Boolean
+    Public Shared Function YesNoCancel(parent As FrameworkElement, Title As String, Message As String, Optional HelpTopic As Integer = 0) As MessageBoxResult
         Dim d As New MessageDialog With {.TitleStr = Title, .MessageStr = Message, .Owner = GetParentWindow(parent), .HelpTopic = HelpTopic, .DlgMode = MessageDialog.DialogMode.YesNoCancel}
+        d.ShowDialog()
+        Return d.ButtonClicked
+    End Function
+
+    Public Shared Function YesNo(parent As FrameworkElement, Title As String, Message As String, Optional HelpTopic As Integer = 0) As Boolean
+        Dim d As New MessageDialog With {.TitleStr = Title, .MessageStr = Message, .Owner = GetParentWindow(parent), .HelpTopic = HelpTopic, .DlgMode = MessageDialog.DialogMode.YesNo}
         Return d.ShowDialog()
     End Function
 

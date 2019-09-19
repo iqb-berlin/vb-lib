@@ -9,10 +9,10 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("iqblib-windows")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyDescription("Das IQB hat in dieser Bibliothek Funktionen platziert, die die Kommunikation mit Windows und Active Directory unterstützen.")>
+<Assembly: AssemblyCompany("IQB Berlin")>
 <Assembly: AssemblyProduct("iqblib-windows")>
-<Assembly: AssemblyCopyright("Copyright ©  2019")>
+<Assembly: AssemblyCopyright("IQB © 2019")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
