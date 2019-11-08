@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:local="clr-namespace:HUBerlin.IQB.CheckLists"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataTemplate x:Key="lsToDoListEntryDataTemplate_ToDo">
+        <Button Command="local:Commands.Confirm" BorderBrush="Transparent" Background="Transparent" Padding="4 0 4 0" HorizontalContentAlignment="Left">
+            <TextBlock Text="{Binding Element[label].Value}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Element[journaltext].Value}"
+                            HorizontalAlignment="Left"/>
+        </Button>
+    </DataTemplate>
+    <DataTemplate x:Key="lsToDoListEntryDataTemplate_Confirmed">
+        <DockPanel>
+            <TextBlock DockPanel.Dock="Right" Text="{Binding Attribute[donedate].Value}" FontStyle="Italic" Height="18"/>
+            <TextBlock Text="{Binding Element[label].Value}" TextTrimming="CharacterEllipsis" FontStyle="Italic" Height="18"
+                            ToolTip="{Binding Element[journaltext].Value}" Margin="20 0 5 0"/>
+        </DockPanel>
+    </DataTemplate>
+    <local:ToDoListEntryDataTemplateSelector x:Key="lsToDoListEntryDataTemplateSelector" 
+                                                    ToDoTemplate="{StaticResource lsToDoListEntryDataTemplate_ToDo}"
+                                                    ConfirmedTemplate="{StaticResource lsToDoListEntryDataTemplate_Confirmed}"/>
+</ResourceDictionary>

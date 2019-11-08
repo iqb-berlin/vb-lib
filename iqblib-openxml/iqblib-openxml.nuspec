@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <license type="expression">MIT</license>
+    <repository type="git" url="https://github.com/iqb-vbnet/iqblib.git" branch="dev"/>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial Commit</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>IQB MDR MDC OpenXml</tags>
+    <dependencies>
+      <dependency id="DocumentFormat.OpenXml" version="2.9" />
+    </dependencies>
+  </metadata>
+</package>

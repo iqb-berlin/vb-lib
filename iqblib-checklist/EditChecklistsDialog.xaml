@@ -1,0 +1,58 @@
+﻿<Window x:Class="EditChecklistsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:iqb.lib.checklist"
+        xmlns:libcomp="clr-namespace:iqb.lib.components;assembly=iqblib-components"
+        xmlns:md="clr-namespace:iqb.md.components;assembly=iqbmd-components"
+        
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False"
+        libcomp:HelpProvider.HelpTopicId="2002"
+        Icon="pack://application:,,,/iqblib-components;component/Resources/iqbGrau.ico"
+        Title="Title" Height="531.327" Width="766.557">
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/iqblib-components;component/GlobalStyles.xaml"/>
+    </Window.Resources>
+    <DockPanel>
+        <DockPanel.Resources>
+            <local:PickLabelFromXElementConverter x:Key="PickLabelFromXElementConverter"/>
+        </DockPanel.Resources>
+        <libcomp:ButtonHelpSmall DockPanel.Dock="Top" Margin="0 3 3 0" HorizontalAlignment="Right" Name="BtnHelp" Panel.ZIndex="4" />
+
+        <ItemsControl Style="{StaticResource gsDialogBoxFooter}" DockPanel.Dock="Bottom" ItemContainerStyle="{StaticResource gsDialogBoxFooterButton}" Panel.ZIndex="2">
+            <Button IsCancel="True" Click="BtnCancel_Clicked" Panel.ZIndex="100">Schließen</Button>
+        </ItemsControl>
+
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <DockPanel Grid.Column="0">
+                <DockPanel DockPanel.Dock="Top" LastChildFill="False">
+                    <libcomp:ButtonNewSmall Click="BtnNewChecklist_Click" ToolTip="Neue Checkliste"/>
+                    <libcomp:ButtonDeleteSmall Click="BtnDeleteChecklist_Click" ToolTip="Checkliste löschen" Margin="4"/>
+                    <libcomp:ButtonReport ToolTip="Checklisten als Docx speichern" DockPanel.Dock="Right" Margin="0 4 0 4"/>
+                </DockPanel>
+                
+                <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                         Name="LBChecklists"
+                         ItemContainerStyle="{StaticResource gsStandardListBoxItem}" SelectedValuePath="Key">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Value, Converter={StaticResource PickLabelFromXElementConverter}}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+
+            <DockPanel Grid.Column="1" Margin="0 25 0 0" Name="DPChecklistData" DataContext="{Binding ElementName=LBChecklists, Path=SelectedItem.Value}">
+                <DockPanel DockPanel.Dock="Top">
+                    <TextBlock Margin="2 2 10 2">Name:</TextBlock>
+                    <TextBox Text="{Binding Attribute[lb].Value, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" TextChanged="ChecklistLabelChanged" />
+                </DockPanel>
+                <local:ChecklistPointsEditUserControl XChecklist="{Binding}" x:Name="CPEUC"/>
+            </DockPanel>
+        </Grid>
+    </DockPanel>
+</Window>

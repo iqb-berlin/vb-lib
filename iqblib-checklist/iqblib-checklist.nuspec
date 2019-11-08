@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <license type="expression">MIT</license>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <repository type="git" url="https://github.com/iqb-vbnet/iqblib.git" branch="master"/>
+    <description>$description$</description>
+    <releaseNotes>Initial Commit.</releaseNotes>
+    <copyright>IQB 2019</copyright>
+    <tags>EF</tags>
+    <dependencies>
+      <dependency id="iqblib-components" version="[1.0,2.0)" />
+      <dependency id="iqbmd-components" version="[1.0,2.0)" />
+      <dependency id="iqbmd-xml" version="[1.0,2.0)" />
+    </dependencies>
+  </metadata>
+</package>

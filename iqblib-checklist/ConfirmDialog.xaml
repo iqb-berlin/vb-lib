@@ -1,0 +1,64 @@
+﻿<Window x:Class="ConfirmDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        
+        xmlns:libcomp="clr-namespace:iqb.lib.components;assembly=iqblib-components"
+        xmlns:md="clr-namespace:iqb.md.components;assembly=iqbmd-components"
+
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False"
+        Icon="pack://application:,,,/iqblib-components;component/Resources/iqbGrau.ico"
+        libcomp:HelpProvider.HelpTopicId="2001"
+        Title="Aktion bestätigen" Height="454.541" Width="588.717">
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/iqblib-components;component/GlobalStyles.xaml"/>
+    </Window.Resources>
+    <DockPanel>
+        <DockPanel.Resources>
+            <libcomp:BooleanVisibilityConverter x:Key="BooleanVisibilityConverter"/>
+            <libcomp:BooleanNotVisibilityConverter x:Key="BooleanNotVisibilityConverter"/>
+            <DataTemplate x:Key="ICContinueRadioButtonDataTemplate">
+                <RadioButton GroupName="yoyo" Content="{Binding Value}" IsChecked="{Binding Attribute[IsChecked].Value}"/>
+            </DataTemplate>
+            <DataTemplate x:Key="ICContinueCheckBoxDataTemplate">
+                <CheckBox Content="{Binding Value}" IsChecked="{Binding Attribute[IsChecked].Value}"/>
+            </DataTemplate>
+        </DockPanel.Resources>
+        <libcomp:ButtonHelpSmall DockPanel.Dock="Top" Margin="0 3 3 0" HorizontalAlignment="Right" Name="BtnHelp" Panel.ZIndex="4" />
+        <ItemsControl Style="{StaticResource gsDialogBoxFooter}" DockPanel.Dock="Bottom" ItemContainerStyle="{StaticResource gsDialogBoxFooterButton}" Panel.ZIndex="20">
+            <Button Name="BtnConfirm" IsDefault="True">Bestätigen</Button>
+            <Button Name="BtnCancel" IsCancel="True">Abbrechen</Button>
+        </ItemsControl>
+        <TextBlock Name="TBlLabel" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                   Margin="10" DockPanel.Dock="Top" TextWrapping="Wrap">journaltext</TextBlock>
+        <TextBlock VerticalAlignment="Center" Margin="10 10 10 10" TextWrapping="Wrap"
+                   Name="TBlFinal" Foreground="Blue" DockPanel.Dock="Top">Achtung: Diese Bestätigung führt zum Schließen der Checkliste.</TextBlock>
+        <TextBlock Name="TBPlusProp" Margin="10 0 10 10" DockPanel.Dock="Top" TextWrapping="Wrap" Foreground="Blue">Achtung: Diese Bestätigung setzt</TextBlock>
+        <DockPanel DockPanel.Dock="Top" Margin="10 2 10 2" Name="DPComment">
+            <TextBlock VerticalAlignment="Center" Margin="0 0 5 0" Name="TBlComment" Width="200" TextWrapping="Wrap">Kommentar:</TextBlock>
+            <TextBox Name="TBComment" AcceptsReturn="True" TextWrapping="Wrap"/>
+        </DockPanel>
+        <Border Name="BorderContinue" DockPanel.Dock="Bottom" BorderBrush="LightGray" BorderThickness="0 2 0 0">
+            <DockPanel Margin="10">
+                <TextBlock VerticalAlignment="Top" Margin="0 0 5 0" Width="200" TextWrapping="Wrap" Visibility="{Binding Attribute[mc].Value, Converter={StaticResource BooleanNotVisibilityConverter}}">
+                    Bitte wählen Sie eine Checkliste zur Fortsetzung:</TextBlock>
+                <TextBlock VerticalAlignment="Top" Margin="0 0 5 0" Width="200" TextWrapping="Wrap" Visibility="{Binding Attribute[mc].Value, Converter={StaticResource BooleanVisibilityConverter}}">
+                    Bitte wählen Sie Checkliste(n) zur Fortsetzung:</TextBlock>
+                <ItemsControl Name="ICContinue">
+                    <ItemsControl.Resources>
+                        <Style TargetType="{x:Type ItemsControl}">
+                            <Setter Property="ItemTemplate" Value="{StaticResource ICContinueRadioButtonDataTemplate}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Attribute[mc].Value}" Value="True">
+                                    <Setter Property="ItemTemplate" Value="{StaticResource ICContinueCheckBoxDataTemplate}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ItemsControl.Resources>
+                </ItemsControl>
+            </DockPanel>
+        </Border>
+        <md:MDListControl x:Name="MDLC" DockPanel.Dock="Top" IsReadOnly="False" Margin="10"/>
+
+    </DockPanel>
+</Window>

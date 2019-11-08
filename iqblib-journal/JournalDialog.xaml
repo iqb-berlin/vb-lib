@@ -1,0 +1,102 @@
+﻿<Window x:Class="JournalDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+
+        xmlns:local="clr-namespace:iqb.lib.journal"
+        xmlns:libcomp="clr-namespace:iqb.lib.components;assembly=iqblib-components"
+        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase" 
+
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False"
+        Icon="pack://application:,,,/iqblib-components;component/Resources/iqbGrau.ico"
+        libcomp:HelpProvider.HelpTopicId="2022"
+        Title="Journal" Height="805.138" Width="588.717">
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/iqblib-components;component/GlobalStyles.xaml"/>
+    </Window.Resources>
+    <DockPanel>
+        <DockPanel.Resources>
+            <local:XLogEntriesConverter x:Key="XLogEntriesConverter"/>
+            <libcomp:TextVisibilityNotEmptyConverter x:Key="TextVisibilityNotEmptyConverter"/>
+            <local:LogDateStringConverter x:Key="LogDateStringConverter"/>
+            <local:JournalEntryCategoryBrushConverter x:Key="JournalEntryCategoryBrushConverter"/>
+            <libcomp:BooleanReverseConverter x:Key="BooleanReverseConverter"/>
+            <libcomp:BooleanOrVisibilityConverter x:Key="BooleanOrVisibilityConverter"/>
+
+            <DataTemplate x:Key="LogEntryDataTemplate">
+                <StackPanel>
+                    <DockPanel Background="LightGray">
+                        <Ellipse Width="10" Height="10" Fill="{Binding Attribute[category].Value, Converter={StaticResource JournalEntryCategoryBrushConverter}}" Margin="3 0 8 0"/>
+                        <TextBlock Text="{Binding Attribute[date].Value, Converter={StaticResource LogDateStringConverter}}" Margin="0 0 5 0" Width="80" TextTrimming="CharacterEllipsis"
+                                                                                   ToolTip="{Binding Attribute[date].Value}"/>
+
+                        <TextBlock Text="{Binding Attribute[lb].Value}" TextTrimming="CharacterEllipsis"
+                                   ToolTip="{Binding Attribute[lb].Value}"/>
+                    </DockPanel>
+                    <DockPanel Background="LavenderBlush" Margin="20 0 0 4">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+                            <StackPanel.Visibility>
+                                <MultiBinding Converter="{StaticResource BooleanOrVisibilityConverter}">
+                                    <Binding Path="Attribute[sys].Value" Converter="{StaticResource BooleanReverseConverter}"/>
+                                    <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:JournalDialog}}" Path="EnableSysEdit"/>
+                                </MultiBinding>
+                            </StackPanel.Visibility>
+                            <libcomp:ButtonEditSmall Margin="4 0 4 0" Click="BtnEdit_Clicked" ToolTip="Diesen Eintrag bearbeiten"/>
+                            <libcomp:ButtonDeleteSmall Click="BtnDelete_Clicked" ToolTip="Diesen Eintrag löschen"/>
+                        </StackPanel>
+                        <TextBlock Text="{Binding Attribute[category].Value}" FontStyle="Italic" DockPanel.Dock="Right"/>
+                        <TextBlock Text=" / " Margin="5 0 5 0" FontStyle="Italic" DockPanel.Dock="Right"/>
+                        <TextBlock Text="{Binding Attribute[user].Value}" TextTrimming="CharacterEllipsis" DockPanel.Dock="Right"
+                                   ToolTip="{Binding Attribute[user].Value}" FontStyle="Italic"/>
+                        <ItemsControl ItemsSource="{Binding Elements[ref]}" Margin="0 0 5 0">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Value}" Margin="3"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </DockPanel>
+                    <TextBlock Text="{Binding Element[text].Value}" TextWrapping="Wrap" Margin="20 0 0 10" 
+                               Visibility="{Binding Element[text].Value, Converter={StaticResource TextVisibilityNotEmptyConverter}}"/>
+                </StackPanel>
+            </DataTemplate>
+            <CollectionViewSource x:Key="CVSJournalList" Source="{Binding Elements}" Filter="FilterJournalList">
+                <CollectionViewSource.SortDescriptions>
+                    <scm:SortDescription PropertyName="Attribute[date].Value" Direction="Descending"/>
+                </CollectionViewSource.SortDescriptions>
+            </CollectionViewSource>
+        </DockPanel.Resources>
+        
+        <Label Style="{StaticResource gsTip}" Margin="10" DockPanel.Dock="Top">Sie können die Anzeigeliste der Journaleinträge einschränken, indem Sie in den unteren Klappfeldern ein Filterkriterium auswählen.</Label>
+        <ItemsControl Style="{StaticResource gsDialogBoxFooter}" DockPanel.Dock="Bottom" ItemContainerStyle="{StaticResource gsDialogBoxFooterButton}" Panel.ZIndex="20">
+            <Button Name="BtnSave">Schließen</Button>
+            <Button Name="BtnCancel" Visibility="Collapsed">Abbrechen</Button>
+        </ItemsControl>
+        <DockPanel DockPanel.Dock="Top" Margin="10">
+            <DockPanel DockPanel.Dock="Top">
+                <WrapPanel>
+                    <StackPanel Orientation="Horizontal" Margin="3" Name="StPRefString">
+                        <TextBlock VerticalAlignment="Center" FontSize="14" Name="TBRefString">Filter Antragsteller/in:</TextBlock>
+                        <ComboBox Name="CbBApplicant" Margin="3"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="3">
+                        <TextBlock VerticalAlignment="Center" FontSize="14">Filter Eintrag-Typ:</TextBlock>
+                        <ComboBox Name="CbBType" Margin="3"/>
+                    </StackPanel>
+                </WrapPanel>
+            </DockPanel>
+            <Border BorderBrush="LightGray" BorderThickness="1" Margin="0 10 0 0">
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <ItemsControl Name="ICXJournal" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource LogEntryDataTemplate}"
+                                  ItemsSource="{Binding Source={StaticResource CVSJournalList}}"/>
+                </ScrollViewer>
+            </Border>
+        </DockPanel>
+
+    </DockPanel>
+</Window>

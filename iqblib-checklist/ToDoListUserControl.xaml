@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="ToDoListUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:iqb.lib.checklist"
+             xmlns:libcomp="clr-namespace:iqb.lib.components;assembly=iqblib-components"
+             xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase" 
+
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/iqblib-components;component/GlobalStyles.xaml"/>
+                <ResourceDictionary Source="/iqblib-checklist;component/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <DockPanel>
+        <DockPanel.Resources>
+            <libcomp:IntegerVisibilityCollapsedGreaterThen0Converter x:Key="IntegerVisibilityCollapsedGreaterThen0Converter"/>
+            <libcomp:BooleanVisibilityConverter x:Key="BooleanVisibilityConverter"/>
+            <CollectionViewSource x:Key="CVSToDoList" Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:ToDoListUserControl}}, Path=XToDoList}">
+                <CollectionViewSource.GroupDescriptions>
+                    <PropertyGroupDescription PropertyName="Attribute[checklist_name].Value"/>
+                </CollectionViewSource.GroupDescriptions>
+            </CollectionViewSource>
+        </DockPanel.Resources>
+        <Border BorderThickness="0 0 0 2" BorderBrush="LightGray" DockPanel.Dock="Top">
+            <DockPanel LastChildFill="False" Margin="3" Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:ToDoListUserControl}}, Path=CanAddDelete, Converter={StaticResource BooleanVisibilityConverter}}">
+                <libcomp:ButtonNewSmall Command="local:Commands.AddToDoList" ToolTip="Neue Checkliste einhängen"/>
+                <libcomp:ButtonDeleteSmall Margin="3 0 3 0" Command="local:Commands.RemoveToDoList" ToolTip="Checkliste entfernen"
+                                        Visibility="{Binding ElementName=ICToDoList, Path=Items.Count, Converter={StaticResource IntegerVisibilityCollapsedGreaterThen0Converter}}"/>
+            </DockPanel>
+        </Border>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <ItemsControl ItemsSource="{Binding Source={StaticResource CVSToDoList}}" HorizontalContentAlignment="Stretch"
+                          ItemTemplateSelector="{StaticResource lsToDoListEntryDataTemplateSelector}" Name="ICToDoList">
+                <ItemsControl.GroupStyle>
+                    <GroupStyle ContainerStyle="{StaticResource gsGroupStyleStandard}"/>
+                </ItemsControl.GroupStyle>
+            </ItemsControl>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>
