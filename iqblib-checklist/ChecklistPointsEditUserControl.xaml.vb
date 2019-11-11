@@ -50,7 +50,7 @@ Public Class ChecklistPointsEditUserControl
         End Set
     End Property
 
-    _ As List(Of String)
+    '_ As List(Of String)
     '################################################################################################
     Public Sub RefreshPointList()
         Dim be As BindingExpression = LBPoints.GetBindingExpression(ItemsControl.ItemsSourceProperty)
@@ -61,7 +61,7 @@ Public Class ChecklistPointsEditUserControl
         If XChecklist Is Nothing Then
             DialogFactory.MsgError(DialogFactory.GetParentWindow(Me), "Neuer Eintrag", "Bitte wählen Sie erst eine Checkliste aus!")
         Else
-            Dim myDlg As New EditChecklistsPointDialog(MyChecklistPool, XChecklist, Nothing, Me.PropCatalog, Scope) With {.Owner = DialogFactory.GetParentWindow(Me)}
+            Dim myDlg As New EditChecklistsPointDialog(MyChecklistPool, XChecklist, Nothing, Me.MDCatalogList, Me.MDFilter) With {.Owner = DialogFactory.GetParentWindow(Me)}
             If myDlg.ShowDialog Then RefreshPointList()
         End If
     End Sub
@@ -81,7 +81,7 @@ Public Class ChecklistPointsEditUserControl
         Else
             Dim XPoint As XElement = LBPoints.SelectedItems(0)
 
-            Dim myDlg As New EditChecklistsPointDialog(MyChecklistPool, XChecklist, XPoint, PropCatalog, Scope) With {.Owner = DialogFactory.GetParentWindow(Me)}
+            Dim myDlg As New EditChecklistsPointDialog(MyChecklistPool, XChecklist, XPoint, Me.MDCatalogList, Me.MDFilter) With {.Owner = DialogFactory.GetParentWindow(Me)}
             myDlg.ShowDialog()
             RefreshPointList()
         End If

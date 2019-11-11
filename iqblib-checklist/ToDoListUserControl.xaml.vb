@@ -1,6 +1,4 @@
-﻿Imports HUBerlin.IQB.Common.Controls
-
-Public Class ToDoListUserControl
+﻿Public Class ToDoListUserControl
     Public Shared ReadOnly XToDoListProperty As DependencyProperty =
         DependencyProperty.Register("XToDoList", GetType(List(Of XElement)), GetType(ToDoListUserControl))
 

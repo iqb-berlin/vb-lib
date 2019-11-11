@@ -1,5 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:local="clr-namespace:HUBerlin.IQB.CheckLists"
+                    xmlns:local="clr-namespace:iqb.lib.checklist"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DataTemplate x:Key="lsToDoListEntryDataTemplate_ToDo">
         <Button Command="local:Commands.Confirm" BorderBrush="Transparent" Background="Transparent" Padding="4 0 4 0" HorizontalContentAlignment="Left">

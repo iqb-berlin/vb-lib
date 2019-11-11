@@ -1,27 +1,30 @@
 ﻿Imports DocumentFormat.OpenXml.Packaging
 Imports DocumentFormat.OpenXml.Wordprocessing
 Imports iqb.md.xml
+Imports iqb.lib.components
 
 Public Class EditChecklistsDialog
     Private _ChecklistPoolToEdit As ChecklistPool
     Private _MDFilter As MDFilter
     Private _MDCatalogList As List(Of String)
+    Private _Username As String
     Private Shared LastDocxReportFilename As String = ""
     Private Shared TemplateInfo As Windows.Resources.StreamResourceInfo = Nothing
 
-    Public Sub New(ChecklistPoolToEdit As ChecklistPool, MDCatalogList As List(Of String), MDFilter As MDFilter)
+    Public Sub New(ChecklistPoolToEdit As ChecklistPool, MDCatalogList As List(Of String), MDFilter As MDFilter, Username As String)
         InitializeComponent()
         _ChecklistPoolToEdit = ChecklistPoolToEdit
         _MDCatalogList = MDCatalogList
         _MDFilter = MDFilter
+        _Username = Username
     End Sub
 
     Private Sub Me_Loaded() Handles Me.Loaded
         Me.Title = _ChecklistPoolToEdit.PoolLabel + "-Checklisten bearbeiten"
 
         DPChecklistData.DataContext = Nothing
-        CPEUC.PropCatalog = _PropCatalog
-        CPEUC.Scope = _PropScope
+        CPEUC.MDCatalogList = _MDCatalogList
+        CPEUC.MDFilter = _MDFilter
 
         CommandBindings.Add(New CommandBinding(IQBCommands.Report, AddressOf HandleReportExecuted, AddressOf HandleReportCanExecute))
 
@@ -61,7 +64,8 @@ Public Class EditChecklistsDialog
                                 Dim doc = docPart.Document
 
                                 Dim myType As Type = GetType(EditChecklistsDialog)
-                                Common.Office.docxFactory.SetCustomProperty(NewDoc, "Log", "Erzeugt mit " + myType.AssemblyQualifiedName + "; " + Common.ADFactory.GetMyName + "; " + DateTime.Now.ToShortDateString)
+                                iqb.lib.openxml.docxFactory.SetCustomProperty(NewDoc, "Log",
+                                                                              "Erzeugt mit " + myType.AssemblyQualifiedName + "; " + _Username + "; " + DateTime.Now.ToShortDateString)
 
                                 Dim ChecklistLabels As New Dictionary(Of String, String)
                                 For Each Checklist As KeyValuePair(Of String, XElement) In _ChecklistPoolToEdit.Pool
@@ -109,8 +113,11 @@ Public Class EditChecklistsDialog
 
                                         If Not String.IsNullOrEmpty(XPoint.@prop) Then
                                             Dim PropLabels As New List(Of String)
-                                            For Each p As String In XPoint.@prop.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
-                                                PropLabels.Add(_PropCatalog.GetPropertyLabel(p))
+                                            For Each mddef As String In XPoint.@prop.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
+                                                Dim mddefsplits As String() = mddef.Split({"##"}, StringSplitOptions.RemoveEmptyEntries)
+                                                If mddefsplits.Count = 2 Then
+                                                    PropLabels.Add(md.xml.MDCFactory.GetMDLabel(mddefsplits(0), mddefsplits(1)))
+                                                End If
                                             Next
                                             If PropLabels.Count > 1 Then
                                                 doc.Body.Append(New Paragraph(New ParagraphProperties(New ParagraphStyleId With {.Val = "Checklistreport-Entry"}),

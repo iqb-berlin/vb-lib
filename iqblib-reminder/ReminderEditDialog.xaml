@@ -1,0 +1,37 @@
+﻿<Window x:Class="ReminderEditDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:libcomp="clr-namespace:iqb.lib.components;assembly=iqblib-components"
+        
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False"
+        libcomp:HelpProvider.HelpTopicId="1001"
+        Icon="pack://application:,,,/iqblib-components;component/Resources/iqbGrau.ico"
+        Title="Erinnerung" Height="300" Width="400">
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/iqblib-components;component/GlobalStyles.xaml"/>
+    </Window.Resources>
+    <DockPanel>
+        <libcomp:ButtonHelpSmall DockPanel.Dock="Top" Margin="0 3 3 0" HorizontalAlignment="Right" Name="BtnHelp" Panel.ZIndex="4" />
+        <ItemsControl Style="{StaticResource gsDialogBoxFooter}" DockPanel.Dock="Bottom" ItemContainerStyle="{StaticResource gsDialogBoxFooterButton}" Panel.ZIndex="2">
+            <Button Name="BtnClose" Click="BtnClose_Clicked" Panel.ZIndex="100" Margin="5 5 50 5">Löschen</Button>
+            <Button IsDefault="True" Click="BtnOK_Clicked" Panel.ZIndex="101">Speichern</Button>
+            <Button IsCancel="True" Click="BtnCancel_Clicked" Panel.ZIndex="102">Abbrechen</Button>
+        </ItemsControl>
+
+        <DockPanel DockPanel.Dock="Top" Margin="5">
+            <TextBlock VerticalAlignment="Center" Width="100">Fälligkeit</TextBlock>
+            <DatePicker VerticalAlignment="Center" SelectedDateFormat="Short" Language="de" Name="DPMaturity" />
+            <WrapPanel Margin="10 0 0 0">
+                <TextBlock Margin="0 5 5 0">Heute plus</TextBlock>
+                <Button Margin="3" Padding="3 0 3 0" Click="Btn1Week_Click">1 Woche</Button>
+                <Button Margin="3" Padding="3 0 3 0" Click="Btn1Month_Click">1 Monat</Button>
+                <Button Margin="3" Padding="3 0 3 0" Click="Btn3Months_Click">3 Monate</Button>
+            </WrapPanel>
+        </DockPanel>
+        <DockPanel Margin="5">
+            <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" Width="100">Text für die Erinnerung</TextBlock>
+            <TextBox Name="TBText" TextWrapping="Wrap" AcceptsReturn="True"/>
+        </DockPanel>
+    </DockPanel>
+</Window>

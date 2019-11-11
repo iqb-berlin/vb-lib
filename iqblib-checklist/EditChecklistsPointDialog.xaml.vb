@@ -1,4 +1,5 @@
 ﻿Imports iqb.md.xml
+Imports iqb.lib.components
 
 Public Class EditChecklistsPointDialog
 
@@ -48,12 +49,6 @@ Public Class EditChecklistsPointDialog
             CBPlusProp_ItemsSource.Add(<pp id="">-keine Änderung-</pp>)
             CBPlusProp_ItemsSource.AddRange(From pp As KeyValuePair(Of String, String) In _ChecklistPool.PlusPropValues Select <pp id=<%= pp.Key %>><%= pp.Value %></pp>)
             CBPlusProp.ItemsSource = CBPlusProp_ItemsSource
-        End If
-
-        If _MDCatalogList Is Nothing OrElse _MDCatalogList.Count = 0 Then
-            DPProps.Visibility = Windows.Visibility.Collapsed
-        Else
-            TBPropCat.DataContext = _PropCatalog
         End If
 
         If _XPoint Is Nothing Then
@@ -114,21 +109,24 @@ Public Class EditChecklistsPointDialog
     'Props
     Private Sub BtnNewProp_Click(sender As Object, e As RoutedEventArgs)
         Dim XPoint As XElement = Me.DataContext
-
-        If XPoint IsNot Nothing Then
-            Dim PropList As List(Of String) = XPoint.@prop.Split({" "}, StringSplitOptions.RemoveEmptyEntries).ToList
-            Dim PropsAvailable As List(Of XElement) = (From xe As XElement In _PropCatalog.GetSortedPropEnumeration(New MDR.PropertyFilter(_PropScopes, True, False))
-                                                       Where Not PropList.Contains(xe.@key)).ToList
-            If PropsAvailable.Count = 0 Then
-                DialogFactory.MsgError(DialogFactory.GetParentWindow(Me), _ChecklistPool.PoolLabel + "-Checkliste: Merkmal hinzufügen", "Es sind keine weiteren Merkmale verfügbar.")
+        If _MDCatalogList Is Nothing OrElse _MDCatalogList.Count = 0 Then
+            DialogFactory.MsgError(DialogFactory.GetParentWindow(Me), _ChecklistPool.PoolLabel + "-Checkliste: Merkmal hinzufügen", "Es ist kein Katalaog verfügbar.")
+        ElseIf XPoint IsNot Nothing Then
+            Dim HabSchonMDList As List(Of String) = XPoint.@prop.Split({" "}, StringSplitOptions.RemoveEmptyEntries).ToList
+            Dim AvailableMDList As List(Of XElement) = (From MDI As MDInfo In MDCFactory.GetMDList(_MDCatalogList, _MDFilter)
+                                                            Let MDKey As String = MDI.CatId + "##" + MDI.id,
+                                                            XMD As XElement = <p key=<%= MDKey %> cat=<%= MDI.CatLabel %>><%= MDI.Label %></p>
+                                                            Where Not HabSchonMDList.Contains(MDKey)
+                                                            Order By MDI.Label
+                                                            Select XMD).ToList
+            If AvailableMDList.Count = 0 Then
+                DialogFactory.MsgError(DialogFactory.GetParentWindow(Me), "Neue Eigenschaft", "Keine weitere Eigenschaft verfügbar.")
             Else
-                Dim propicker As New MDR.PickPropertyDialog With {.AvailableProperties = PropsAvailable, .Owner = DialogFactory.GetParentWindow(Me)}
-                If propicker.ShowDialog Then
-                    For Each s As String In propicker.SelectedProperties
-                        PropList.Add(s)
-                    Next
-                    XPoint.@prop = String.Join(" ", PropList)
-
+                Dim myDlg As New XSelectionDialog With {.Owner = DialogFactory.GetParentWindow(Me),
+                    .XSelectionList = AvailableMDList, .GroupAttributePath = "cat", .MultipleSelection = True,
+                    .Title = "Neue Eigenschaft"}
+                If myDlg.ShowDialog Then
+                    XPoint.@prop = myDlg.Selected
                     Dim be As BindingExpression = LBProps.GetBindingExpression(ListBox.ItemsSourceProperty)
                     If be IsNot Nothing Then be.UpdateTarget()
                 End If

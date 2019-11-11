@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="RemindersUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase" 
+             xmlns:local="clr-namespace:iqb.lib.reminder"
+             xmlns:libcomp="clr-namespace:iqb.lib.components;assembly=iqblib-components"
+
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600">
+    <Expander ExpandDirection="Left">
+        <Expander.Resources>
+            <CollectionViewSource x:Key="CVSReminders" Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:RemindersUserControl}}, Path=Reminders}">
+                <CollectionViewSource.SortDescriptions>
+                    <scm:SortDescription PropertyName="DaysToMaturity"></scm:SortDescription>
+                </CollectionViewSource.SortDescriptions>
+            </CollectionViewSource>
+            <local:ReminderConverter x:Key="ReminderConverter"/>
+            <local:ReminderExpanderHeaderBackgroundConverter x:Key="ReminderExpanderHeaderBackgroundConverter"/>
+            <libcomp:IntegerBooleanGreaterThen0Converter x:Key="IntegerBooleanGreaterThen0Converter"/>
+        </Expander.Resources>
+        <Expander.Header>
+            <TextBlock Text="Erinnerungen" Padding="5 2 5 2" HorizontalAlignment="Center" Background="{Binding ElementName=ICReminders, Path=ItemsSource, Converter={StaticResource ReminderExpanderHeaderBackgroundConverter}}">
+                <TextBlock.LayoutTransform>
+                    <RotateTransform Angle="90"/>
+                </TextBlock.LayoutTransform>
+            </TextBlock>
+        </Expander.Header>
+        <DockPanel Width="150">
+            <libcomp:ButtonNewSmall Click="BtnNew_Click" DockPanel.Dock="Top" HorizontalAlignment="Left" ToolTip="Erinnerung hinzufügen" Margin="3"
+                                 IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:RemindersUserControl}}, Path=CurrentObjectId, Converter={StaticResource IntegerBooleanGreaterThen0Converter}}"/>
+            
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch">
+                <ItemsControl ItemsSource="{Binding Source={StaticResource CVSReminders}}" Name="ICReminders">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <DockPanel MouseLeftButtonUp="DPReminder_Click">
+                                <Border BorderThickness="0 0 3 0" Background="LightGray">
+                                    <Border.BorderBrush>
+                                        <MultiBinding Converter="{StaticResource ReminderConverter}">
+                                            <Binding Path="ObjectId"/>
+                                            <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type local:RemindersUserControl}}" Path="CurrentObjectId"/>
+                                        </MultiBinding>
+                                    </Border.BorderBrush>
+                                    <TextBlock Text="{Binding DaysToMaturity}" Padding="2" Width="20"/>
+                                </Border>
+                                <StackPanel Background="{Binding MaturityBrush}">
+                                    <TextBlock Text="{Binding ObjectLabel}"/>
+                                    <TextBlock Text="{Binding Text}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" MaxHeight="50"/>
+                                </StackPanel>
+                            </DockPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    
+                </ItemsControl>
+            </ScrollViewer>
+        </DockPanel>
+    </Expander>
+</UserControl>
