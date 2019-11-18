@@ -104,10 +104,6 @@ Public Class MDKeyListLabelListConverter
                     myreturn.Add(<MD cat=<%= mddefsplits(0) %> def=<%= mddefsplits(1) %>><%= md.xml.MDCFactory.GetMDLabel(mddefsplits(0), mddefsplits(1)) %></MD>)
                 End If
             Next
-
-            Return Visibility.Visible
-        Else
-            Return Visibility.Collapsed
         End If
         Return myreturn
     End Function

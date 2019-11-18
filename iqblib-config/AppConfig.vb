@@ -57,31 +57,33 @@ Public Class AppConfig
             End If
         End If
 
-        'Throws Exeption!
-        Dim FileData As Byte() = IO.File.ReadAllBytes(ConfigfileName)
-        Dim myXDoc As XDocument = Nothing
+        If Not String.IsNullOrEmpty(ConfigfileName) Then
+            'Throws Exeption!
+            Dim FileData As Byte() = IO.File.ReadAllBytes(ConfigfileName)
+            Dim myXDoc As XDocument = Nothing
 
-        Using mstream As New IO.MemoryStream(FileData)
-            Using zipstream As New IO.Compression.GZipStream(mstream, IO.Compression.CompressionMode.Decompress)
-                Using myXReader As System.Xml.XmlReader = System.Xml.XmlReader.Create(zipstream,
+            Using mstream As New IO.MemoryStream(FileData)
+                Using zipstream As New IO.Compression.GZipStream(mstream, IO.Compression.CompressionMode.Decompress)
+                    Using myXReader As System.Xml.XmlReader = System.Xml.XmlReader.Create(zipstream,
                                             New XmlReaderSettings With {.IgnoreWhitespace = True})
-                    myXDoc = XDocument.Load(myXReader, LoadOptions.None)
+                        myXDoc = XDocument.Load(myXReader, LoadOptions.None)
+                    End Using
                 End Using
             End Using
-        End Using
 
-        If myXDoc IsNot Nothing Then
-            For Each XSection As XElement In myXDoc.Root.Elements
-                Dim SectionKey As String = XSection.@key
-                For Each XOption As XElement In XSection.Elements
-                    Dim OptionKey As String = XOption.@key
-                    Dim OptionValue As String = XOption.Value
-                    If Not String.IsNullOrEmpty(DecryptKey) Then OptionValue = CryptoHelper.DecryptString(OptionValue, DecryptKey)
-                    If Not Me.ContainsKey(SectionKey) Then Me.Add(SectionKey, New Dictionary(Of String, String))
-                    Dim myOptionDict As Dictionary(Of String, String) = Me.Item(SectionKey)
-                    If Not myOptionDict.ContainsKey(OptionKey) Then myOptionDict.Add(OptionKey, OptionValue)
+            If myXDoc IsNot Nothing Then
+                For Each XSection As XElement In myXDoc.Root.Elements
+                    Dim SectionKey As String = XSection.@key
+                    For Each XOption As XElement In XSection.Elements
+                        Dim OptionKey As String = XOption.@key
+                        Dim OptionValue As String = XOption.Value
+                        If Not String.IsNullOrEmpty(DecryptKey) Then OptionValue = CryptoHelper.DecryptString(OptionValue, DecryptKey)
+                        If Not Me.ContainsKey(SectionKey) Then Me.Add(SectionKey, New Dictionary(Of String, String))
+                        Dim myOptionDict As Dictionary(Of String, String) = Me.Item(SectionKey)
+                        If Not myOptionDict.ContainsKey(OptionKey) Then myOptionDict.Add(OptionKey, OptionValue)
+                    Next
                 Next
-            Next
+            End If
         End If
     End Sub
 

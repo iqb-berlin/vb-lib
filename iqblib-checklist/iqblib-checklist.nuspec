@@ -10,9 +10,9 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <repository type="git" url="https://github.com/iqb-vbnet/iqblib.git" branch="master"/>
     <description>$description$</description>
-    <releaseNotes>Initial Commit.</releaseNotes>
+    <releaseNotes>Bugfix MD-Handling</releaseNotes>
     <copyright>IQB 2019</copyright>
-    <tags>EF</tags>
+    <tags>IQB Copyright</tags>
     <dependencies>
       <dependency id="iqblib-components" version="[1.0,2.0)" />
       <dependency id="iqbmd-components" version="[1.0,2.0)" />

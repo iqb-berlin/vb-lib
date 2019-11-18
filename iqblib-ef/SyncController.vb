@@ -160,12 +160,12 @@ Public Class SyncController
     Shared Sub StartSync()
         Try
             If Not inaction Then
-                Console.WriteLine("start sync thread ")
+                'Console.WriteLine("start sync thread ")
                 inaction = True
                 For Each k In TypedSyncController
                     Try
                         If k.ObservingEntities.Count > 0 Then
-                            Console.WriteLine("start sync thread " & k.Type.ToString & k.ObservingEntities.Count)
+                            'Console.WriteLine("start sync thread " & k.Type.ToString & k.ObservingEntities.Count)
                             k.Synchronize()
                         End If
 
@@ -173,8 +173,8 @@ Public Class SyncController
                     End Try
                 Next
                 inaction = False
-            Else
-                Console.WriteLine("sync in action -> skip this run")
+                'Else
+                '    Console.WriteLine("sync in action -> skip this run")
             End If
 
         Catch ex As Exception
@@ -245,7 +245,7 @@ Public Class SyncController(Of T As EntityObject)
             ObservingEntities.Remove(k)
             c += 1
         Next
-        Console.WriteLine("removed " & c & " entries from synccontrol of " & Type.ToString)
+        'Console.WriteLine("removed " & c & " entries from synccontrol of " & Type.ToString)
     End Sub
 
     Private lastsynctimes As New Dictionary(Of String, Date)

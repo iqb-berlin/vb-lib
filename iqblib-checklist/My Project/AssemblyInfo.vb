@@ -15,7 +15,7 @@ Imports System.Windows
 <Assembly: AssemblyDescription("Diese Bibliothek vereinfacht den Umgang mit Check-/ToDo-Listen.")>
 <Assembly: AssemblyCompany("IQB Berlin")>
 <Assembly: AssemblyProduct("iqblib_checklist")>
-<Assembly: AssemblyCopyright("Copyright @  2019")>
+<Assembly: AssemblyCopyright("IQB @ 2019")>
 <Assembly: AssemblyTrademark("")> 
 <Assembly: ComVisible(false)>
 
@@ -42,7 +42,7 @@ Imports System.Windows
 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("0ef66569-95c1-455d-ad87-69c4770d006f")> 
+<Assembly: Guid("0ef66569-95c1-455d-ad87-69c4770d006f")>
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -55,5 +55,5 @@ Imports System.Windows
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.0.0.0")>
-<Assembly: AssemblyFileVersion("1.0.0.0")>
+<Assembly: AssemblyVersion("1.0.2.0")>
+<Assembly: AssemblyFileVersion("1.0.2.0")>

@@ -126,7 +126,13 @@ Public Class EditChecklistsPointDialog
                     .XSelectionList = AvailableMDList, .GroupAttributePath = "cat", .MultipleSelection = True,
                     .Title = "Neue Eigenschaft"}
                 If myDlg.ShowDialog Then
-                    XPoint.@prop = myDlg.Selected
+                    If String.IsNullOrEmpty(XPoint.@prop) Then
+                        XPoint.@prop = myDlg.Selected
+                    Else
+                        Dim XMDSplits As List(Of String) = XPoint.@prop.Split({" "}, StringSplitOptions.RemoveEmptyEntries).ToList
+                        If Not XMDSplits.Contains(myDlg.Selected) Then XPoint.@prop += " " + myDlg.Selected
+                    End If
+
                     Dim be As BindingExpression = LBProps.GetBindingExpression(ListBox.ItemsSourceProperty)
                     If be IsNot Nothing Then be.UpdateTarget()
                 End If

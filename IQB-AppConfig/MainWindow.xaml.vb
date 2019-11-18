@@ -126,7 +126,7 @@ Class MainWindow
             End If
             Dim tmpAppConfig As New iqb.lib.config.AppConfig("")
             XAppConfigDoc = tmpAppConfig.ToXDocument()
-            Me.LBSections.DataContext = XAppConfigDoc.Root
+            Me.GrMain.DataContext = XAppConfigDoc.Root
             AddHandler XAppConfigDoc.Root.Changed, AddressOf Notify_XAppConfigDocChanged
             AppConfigChanged = False
         End If
@@ -160,7 +160,7 @@ Class MainWindow
                     End If
                     Dim tmpAppConfig As New iqb.lib.config.AppConfig(filepicker.FileName, EncryptKey)
                     XAppConfigDoc = tmpAppConfig.ToXDocument()
-                    Me.LBSections.DataContext = XAppConfigDoc.Root
+                    Me.GrMain.DataContext = XAppConfigDoc.Root
                     AddHandler XAppConfigDoc.Root.Changed, AddressOf Notify_XAppConfigDocChanged
                     AppConfigChanged = False
 
