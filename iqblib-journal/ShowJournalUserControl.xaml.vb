@@ -97,6 +97,18 @@ Public Class ShowJournalUserControl
         End Set
     End Property
 
+    Public Shared ReadOnly LabelProperty As DependencyProperty =
+        DependencyProperty.Register("Label", GetType(String), GetType(ShowJournalUserControl))
+
+    Public Property Label As String
+        Get
+            Return GetValue(LabelProperty)
+        End Get
+        Set(ByVal value As String)
+            SetValue(LabelProperty, value)
+        End Set
+    End Property
+
 
     '######################################################################
     Public Sub RefreshJournal()

@@ -17,6 +17,8 @@
         </DockPanel.Resources>
         <Border BorderThickness="0 0 0 2" BorderBrush="LightGray" DockPanel.Dock="Top">
             <DockPanel LastChildFill="False" Margin="3">
+                <TextBlock VerticalAlignment="Center" Margin="2"
+                           Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:ShowJournalUserControl}}, Path=Label}"/>
                 <libcomp:ButtonNewSmall Click="BtnNewJournalEntry_Click" DockPanel.Dock="Right" ToolTip="Neuer Journal-Eintrag"
                                      IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:ShowJournalUserControl}}, Path=XLog, Converter={StaticResource ObjectBooleanNotNothingConverter}}"
                                      Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:ShowJournalUserControl}}, Path=CanAdd, Converter={StaticResource BooleanVisibilityConverter}}"/>

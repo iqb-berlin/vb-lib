@@ -19,7 +19,11 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "iqblib-checklist", "iqblib-
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "iqblib-reminder", "iqblib-reminder\iqblib-reminder.vbproj", "{39FAEEF3-09A7-4EA1-A6BE-AC85CA90B3E6}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "IQB-AppConfig", "IQB-AppConfig\IQB-AppConfig.vbproj", "{FA3F5B18-3874-48B8-B2E0-82821C5C6EF1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9B707586-AC6C-4B84-9350-3AEA637BE8FA}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +63,6 @@ Global
 		{39FAEEF3-09A7-4EA1-A6BE-AC85CA90B3E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39FAEEF3-09A7-4EA1-A6BE-AC85CA90B3E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39FAEEF3-09A7-4EA1-A6BE-AC85CA90B3E6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FA3F5B18-3874-48B8-B2E0-82821C5C6EF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FA3F5B18-3874-48B8-B2E0-82821C5C6EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FA3F5B18-3874-48B8-B2E0-82821C5C6EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FA3F5B18-3874-48B8-B2E0-82821C5C6EF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
