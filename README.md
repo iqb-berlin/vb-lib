@@ -31,3 +31,10 @@ Controls und Funktionen für Erinnerungen in Anwendungen (Zeitgesteuerte Hinweis
 
 * [![Nuget](https://img.shields.io/nuget/v/iqblib-config?label=iqblib-config&style=flat-square)](https://www.nuget.org/packages/iqblib-config/ "goto nuget package")<br>
 Controls und Funktionen zur Basis-Konfiguration von Anwendungen
+
+# Für Entwickler: Veröffentlichen
+1. Änderungen vornehmen
+2. Versionsnummer in Projekteigenschaften ändern
+3. Build
+4. Aufruf `nuget pack`, ggf. mit Pfad zur nuget.exe
+5. Upload der generierten *.nupkg über nuget.org

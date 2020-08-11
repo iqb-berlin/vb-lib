@@ -10,8 +10,8 @@
     <repository type="git" url="https://github.com/iqb-vbnet/iqblib.git" branch="dev"/>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Initial Commit</releaseNotes>
-    <copyright>Copyright 2019</copyright>
+    <releaseNotes>now three char ExcelColumns</releaseNotes>
+    <copyright>Copyright 2019, 2020</copyright>
     <tags>IQB MDR MDC OpenXml</tags>
     <dependencies>
       <dependency id="DocumentFormat.OpenXml" version="2.9" />
