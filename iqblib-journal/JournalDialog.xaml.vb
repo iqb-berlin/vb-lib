@@ -122,7 +122,7 @@ Public Class JournalDialog
     Private Sub BtnEdit_Clicked(sender As Object, e As RoutedEventArgs)
         Dim fe As FrameworkElement = sender
         Dim XJournalEntry As XElement = fe.GetValue(DataContextProperty)
-        If XJournalEntry IsNot Nothing AndAlso XJournalEntry.@sys <> "True" Then
+        If XJournalEntry IsNot Nothing AndAlso (EnableSysEdit OrElse XJournalEntry.@sys <> "True") Then
             Dim myDlg As New EditJournalEntryDialog(_XJournalRoot, XJournalEntry, _RefLabel, _RefList, _UserName, _CanEditRefDate)
             If myDlg.ShowDialog() Then RefreshJournalList()
         End If
@@ -135,7 +135,7 @@ Public Class JournalDialog
     Private Sub BtnDelete_Clicked(sender As Object, e As RoutedEventArgs)
         Dim fe As FrameworkElement = sender
         Dim XJournalEntry As XElement = fe.GetValue(DataContextProperty)
-        If XJournalEntry IsNot Nothing AndAlso XJournalEntry.@sys <> "True" Then
+        If XJournalEntry IsNot Nothing AndAlso (EnableSysEdit OrElse XJournalEntry.@sys <> "True") Then
             If DialogFactory.YesNoCancel(DialogFactory.GetParentWindow(Me), "Löschen Journal-Eintrag", "Möchten Sie den Eintrag '" + XJournalEntry.@lb + "' löschen?") = MessageBoxResult.OK Then
                 XJournalEntry.Remove()
                 RefreshJournalList()
