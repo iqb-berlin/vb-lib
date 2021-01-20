@@ -3,14 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:local="clr-namespace:iqb.lib.components">
-    <Canvas Background="White" Width="40" Height="22">
+    <Canvas Background="White" Width="40" Height="18">
         <Canvas.Resources>
             <local:TimeStringIntegerConverter x:Key="TimeStringIntegerConverter"/>
             <local:TextVisibilityEmptyConverter x:Key="TextVisibilityEmptyConverter"/>
         </Canvas.Resources>
-        <Label Foreground="Gray" Canvas.Top="-2" Content="0:00" Visibility="{Binding ElementName=TBTime, Path=Text, Converter={StaticResource TextVisibilityEmptyConverter}}"/>
+        <Label Foreground="LightGray" Canvas.Top="-5" Content="0:00" Height="24"
+               Visibility="{Binding ElementName=TBTime, Path=Text, Converter={StaticResource TextVisibilityEmptyConverter}}"/>
 
-        <TextBox x:Name="TBTime" Background="Transparent" Width="40" IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeEditUserControl}}, Path=IsReadOnly}">
+        <TextBox x:Name="TBTime" Background="Transparent" Width="40" VerticalContentAlignment="Center"
+                 IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeEditUserControl}}, Path=IsReadOnly}">
             <TextBox.Text>
                 <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeEditUserControl}}"
                          Path="Value" Mode="TwoWay" Converter="{StaticResource TimeStringIntegerConverter}">
