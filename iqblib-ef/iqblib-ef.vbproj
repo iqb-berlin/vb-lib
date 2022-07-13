@@ -7,10 +7,11 @@
     <RootNamespace>iqb.lib.ef</RootNamespace>
     <AssemblyName>iqblib-ef</AssemblyName>
     <OutputType>Library</OutputType>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MyType>Custom</MyType>
     <Deterministic>true</Deterministic>
     <ProjectGuid>{7B837535-3237-4AA6-ABC9-EDCEA572389E}</ProjectGuid>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -108,7 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EntityFramework">
-      <Version>6.3.0</Version>
+      <Version>6.4.4</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

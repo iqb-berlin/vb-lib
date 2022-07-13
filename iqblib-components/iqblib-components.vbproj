@@ -7,10 +7,11 @@
     <RootNamespace>iqb.lib.components</RootNamespace>
     <AssemblyName>iqblib-components</AssemblyName>
     <OutputType>Library</OutputType>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MyType>Custom</MyType>
     <Deterministic>true</Deterministic>
     <ProjectGuid>{D5E4CC00-DC78-4787-8834-AD5A1AD4FD03}</ProjectGuid>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

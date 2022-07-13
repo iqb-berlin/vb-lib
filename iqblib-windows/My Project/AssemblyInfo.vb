@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("Das IQB hat in dieser Bibliothek Funktionen platziert, die die Kommunikation mit Windows und Active Directory unterstützen.")>
 <Assembly: AssemblyCompany("IQB Berlin")>
 <Assembly: AssemblyProduct("iqblib-windows")>
-<Assembly: AssemblyCopyright("IQB © 2019")>
+<Assembly: AssemblyCopyright("IQB © 2019, 2022")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.0.0.0")>
-<Assembly: AssemblyFileVersion("1.0.0.0")>
+<Assembly: AssemblyVersion("1.1.0.0")>
+<Assembly: AssemblyFileVersion("1.1.0.0")>

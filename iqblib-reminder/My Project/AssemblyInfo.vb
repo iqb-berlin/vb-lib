@@ -15,7 +15,7 @@ Imports System.Windows
 <Assembly: AssemblyDescription("Ein kleine Sammlung von Controls, um eine Erinnerungsfunktion einfach zu implementieren.")>
 <Assembly: AssemblyCompany("IQB Berlin")>
 <Assembly: AssemblyProduct("iqblib_reminder")>
-<Assembly: AssemblyCopyright("Berlin @ 2019")>
+<Assembly: AssemblyCopyright("Berlin @ 2019, 2022")>
 <Assembly: AssemblyTrademark("")> 
 <Assembly: ComVisible(false)>
 
@@ -42,7 +42,7 @@ Imports System.Windows
 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("f1041f8c-854f-4068-955e-6c587753e8b4")> 
+<Assembly: Guid("f1041f8c-854f-4068-955e-6c587753e8b4")>
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -55,5 +55,5 @@ Imports System.Windows
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.0.0.0")>
-<Assembly: AssemblyFileVersion("1.0.0.0")>
+<Assembly: AssemblyVersion("1.1.0.0")>
+<Assembly: AssemblyFileVersion("1.1.0.0")>

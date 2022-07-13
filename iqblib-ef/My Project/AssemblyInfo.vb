@@ -15,7 +15,7 @@ Imports System.Windows
 <Assembly: AssemblyDescription("Das IQB benutzt diese Bibliothek für EF-basierte Anwendungen (z. B. automatische Synchronisation der DB-Inhalte)")>
 <Assembly: AssemblyCompany("IQB Berlin")>
 <Assembly: AssemblyProduct("iqblib_ef")>
-<Assembly: AssemblyCopyright("IQB @ 2019")>
+<Assembly: AssemblyCopyright("IQB @ 2019, 2022")>
 <Assembly: AssemblyTrademark("")> 
 <Assembly: ComVisible(false)>
 
@@ -55,5 +55,5 @@ Imports System.Windows
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.1.2.0")>
-<Assembly: AssemblyFileVersion("1.1.2.0")>
+<Assembly: AssemblyVersion("1.2.0.0")>
+<Assembly: AssemblyFileVersion("1.2.0.0")>
