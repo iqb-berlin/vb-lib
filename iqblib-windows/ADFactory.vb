@@ -103,9 +103,13 @@ Public Class ADFactory
     'stellt fest, ob ausführender Nutzer Mitglied einer bestimmten Gruppe ist
     Public Shared Function IAmMemberOf(GroupId As String) As Boolean
         For Each ir As Security.Principal.IdentityReference In System.Security.Principal.WindowsIdentity.GetCurrent().Groups
-            If ir.Translate(GetType(System.Security.Principal.NTAccount)).ToString = "USER\" + GroupId Then
-                Return True
-            End If
+            Dim groupName As String = ""
+            Try
+                groupName = ir.Translate(GetType(System.Security.Principal.NTAccount)).ToString
+            Catch ex As Exception
+                groupName = Nothing
+            End Try
+            If Not String.IsNullOrEmpty(groupName) AndAlso groupName = "USER\" + GroupId Then Return True
         Next
 
         Return False
